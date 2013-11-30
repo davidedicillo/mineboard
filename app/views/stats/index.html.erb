@@ -1,0 +1,32 @@
+<h1>Listing stats</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Server</th>
+      <th>Time</th>
+      <th>Primes/s</th>
+      <th>Tests/s</th>
+      <th>5-chains/h</th>
+      <th>Chains/d</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stats.each do |stat| %>
+      <tr>
+        <td><%= stat.server_id %></td>
+        <td><%= stat.date %></td>
+        <td><%= stat.primes %></td>
+        <td><%= stat.tests %></td>
+        <td><%= stat.fivechains %></td>
+        <td><%= stat.chains %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
