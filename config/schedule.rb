@@ -13,6 +13,10 @@
 #   rake "some:great:rake:task"
 # end
 #
+
+set :output, '/home/rails/log/cron.log'
+
+
 every 1.minutes do
   runner "Server.update_all"
 end
