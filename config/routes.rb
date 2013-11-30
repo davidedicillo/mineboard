@@ -4,7 +4,7 @@ Mineboard::Application.routes.draw do
 
   resources :servers
 
-  root 'welcome#index'
+  root 'stats#index'
 
   resources :stats
 
