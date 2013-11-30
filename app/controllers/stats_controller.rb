@@ -4,9 +4,8 @@ class StatsController < ApplicationController
   # GET /stats
   # GET /stats.json
   def index
-    @stats = Stat.all
-    
-    
+    @stats = Stat.order('date desc').limit(30)
+
 
 
   end
