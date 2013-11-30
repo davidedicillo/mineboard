@@ -17,8 +17,16 @@ class StatsController < ApplicationController
 
     @avgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
 
-    @paststats = Stat.order('date desc').limit(30).offset(5)
-    @pastavgdaychains = (@paststats.collect(&:chains).sum.to_f/@paststats.length).round(30)
+    @paststat_ids = []
+
+    Server.all.each do |server|
+       ids =  server.stats.order('date desc').limit(30).offset(30).pluck(:id)
+       @paststat_ids += ids
+    end
+
+    @paststats = Stat.where(id: @paststat_ids).order('date desc')
+
+    @pastavgdaychains = (@paststats.collect(&:chains).sum.to_f/@paststats.length).round(3)
 
     @changedaychains = (@avgdaychains-@pastavgdaychains).round(3)
   end
