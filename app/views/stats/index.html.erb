@@ -3,6 +3,7 @@
 <h3>Average chais/day: <%= @avgdaychains %> (<%= @changedaychains %>)</h3>
 <h5>Max: <%= @stats.find(:all).map(&:chains).max %> Min: <%= @stats.find(:all).map(&:chains).min %></h5>
 
+<%= @pastavgdaychains %>
 
 <table>
   <thead>

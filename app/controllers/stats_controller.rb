@@ -7,10 +7,10 @@ class StatsController < ApplicationController
     @stats = Stat.order('date desc').limit(30)
     @avgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
 
-    @paststats = Stat.order('date desc').limit(30).offset(30)
-    @pastavgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
+    @paststats = Stat.order('date desc').limit(30).offset(5)
+    @pastavgdaychains = (@paststats.collect(&:chains).sum.to_f/@paststats.length).round(30)
 
-    @changedaychains = @avgdaychains - @pastavgdaychains
+    @changedaychains = (@avgdaychains-@pastavgdaychains).round(3)
   end
 
   # GET /stats/1
