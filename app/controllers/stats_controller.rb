@@ -4,7 +4,13 @@ class StatsController < ApplicationController
   # GET /stats
   # GET /stats.json
   def index
-    @stats = Stat.order('date desc').limit(5)
+    @stats = Stat.order('date desc').limit(30)
+    @avgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
+
+    @paststats = Stat.order('date desc').limit(30).offset(30)
+    @pastavgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
+
+    @changedaychains = @avgdaychains - @pastavgdaychains
   end
 
   # GET /stats/1

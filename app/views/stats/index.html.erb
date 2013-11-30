@@ -1,5 +1,8 @@
 <h1>Listing stats</h1>
-All the servers mixed up
+
+<h3>Average chais/day: <%= @avgdaychains %> (<%= @changedaychains %>)</h3>
+<h5>Max: <%= @stats.find(:all).map(&:chains).max %> Min: <%= @stats.find(:all).map(&:chains).min %></h5>
+
 
 <table>
   <thead>
@@ -14,6 +17,7 @@ All the servers mixed up
   </thead>
 
   <tbody>
+
     <% @stats.each do |stat| %>
       <tr>
         <td><%= stat.server_id %></td>
