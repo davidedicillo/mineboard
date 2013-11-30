@@ -13,7 +13,7 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 1.minutess do
+every 1.minutes do
   runner "Server.update_all"
 end
 
