@@ -1,30 +1,26 @@
 <h1>Servers</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Ip</th>
-      <th>User</th>
-      <th>Password</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @servers.each do |server| %>
+<div class="table-responsive">
+  <table  cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="servers">
+    <thead>
       <tr>
-        <td><%= server.ip %></td>
-        <td><%= server.user %></td>
-        <td><%= server.password %></td>
-        <td><%= link_to 'Show', server %></td>
-        <td><%= link_to 'Edit', edit_server_path(server) %></td>
-        <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Hostname</th>
+        <th>Ip</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @servers.each do |server| %>
+        <tr>
+          <td><%= server.hostname %></td>
+          <td><%= server.ip %></td>
+          <td><%= link_to 'Show', server %> | <%= link_to 'Edit', edit_server_path(server) %> | <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

@@ -1,36 +1,36 @@
 <h1>Listing stats <span style="font-size:14px;">Past 30 entries</span></h1>
 
-<h3>Average chais/day: <%= @avgdaychains %> <span style="font-size:14px;">(<i class="<% if @changedaychains > 0 %>fa fa-arrow-up green<% elsif @changedaychains < 0 %>fa fa-arrow-down red<% else %>fa fa-minus<% end %>"></i> <%= @changedaychains %>)</span></h3>
-<h5>Max: <%= @stats.find(:all).map(&:chains).max %> Min: <%= @stats.find(:all).map(&:chains).min %></h5>
+<h3>Average chains/day: <%= @avgdaychains %> <span style="font-size:14px;">(<i class="<% if @changedaychains > 0 %>fa fa-arrow-up green<% elsif @changedaychains < 0 %>fa fa-arrow-down red<% else %>fa fa-minus<% end %>"></i> <%= @changedaychains %>)</span></h3>
+<h5>Max: <%= @stats.all.map(&:chains).max %> Min: <%= @stats.all.map(&:chains).min %></h5>
 
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Server</th>
-      <th>Time</th>
-      <th>Primes/s</th>
-      <th>Tests/s</th>
-      <th>5-chains/h</th>
-      <th>Chains/d</th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% @stats.each do |stat| %>
+<div class="table-responsive">
+  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="stats">
+    <thead>
       <tr>
-        <td><%= stat.server_id %></td>
-        <td><%= stat.date %></td>
-        <td><%= stat.primes %></td>
-        <td><%= stat.tests %></td>
-        <td><%= stat.fivechains %></td>
-        <td><%= stat.chains %></td>
-
+        <th>Server</th>
+        <th>Time</th>
+        <th>Primes/s</th>
+        <th>Tests/s</th>
+        <th>5-chains/h</th>
+        <th>Chains/d</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+
+      <% @stats.each do |stat| %>
+        <tr>
+          <td><%= stat.server.hostname %></td>
+          <td><%= stat.date %></td>
+          <td><%= stat.primes %></td>
+          <td><%= stat.tests %></td>
+          <td><%= stat.fivechains %></td>
+          <td><%= stat.chains %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

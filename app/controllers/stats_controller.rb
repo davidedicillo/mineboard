@@ -4,7 +4,17 @@ class StatsController < ApplicationController
   # GET /stats
   # GET /stats.json
   def index
-    @stats = Stat.order('date desc').limit(30)
+
+    @stat_ids = []
+
+    Server.all.each do |server|
+       ids =  server.stats.order('date desc').limit(30).pluck(:id)
+       @stat_ids += ids
+    end
+
+    @stats = Stat.where(id: @stat_ids).order('date desc')
+
+
     @avgdaychains = (@stats.collect(&:chains).sum.to_f/@stats.length).round(3)
 
     @paststats = Stat.order('date desc').limit(30).offset(5)

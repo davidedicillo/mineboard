@@ -31,6 +31,8 @@ gem 'whenever', :require => false
 gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', :require => 'bootstrap-rails'
 gem 'font-awesome-sass'
 
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 
 group :production do
   gem 'mysql2'
