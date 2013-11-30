@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'whenever', :require => false
 
 
+gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', :require => 'bootstrap-rails'
+gem 'font-awesome-sass'
+
+
 group :production do
   gem 'mysql2'
 end        
