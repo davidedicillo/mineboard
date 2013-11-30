@@ -1,10 +1,10 @@
-<h1>Listing stats <span style="font-size:14px;">Past 30 minutes</span></h1>
+<h1>Listing stats <span style="font-size:14px;">Past 30 entries</span></h1>
 
 <h3>Average chais/day: <%= @avgdaychains %> <span style="font-size:14px;">(<i class="<% if @changedaychains > 0 %>fa fa-arrow-up green<% elsif @changedaychains < 0 %>fa fa-arrow-down red<% else %>fa fa-minus<% end %>"></i> <%= @changedaychains %>)</span></h3>
 <h5>Max: <%= @stats.find(:all).map(&:chains).max %> Min: <%= @stats.find(:all).map(&:chains).min %></h5>
 
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Server</th>
