@@ -172,7 +172,7 @@ load_func = () ->
 
 
   $('#stats').dataTable
-    aaSorting: [[1, "asc"]]
+    aaSorting: [[1, "desc"]]
   $('#servers').dataTable()
 
 $(document).ready(load_func);
