@@ -17,7 +17,7 @@
 set :output, '/home/rails/log/cron.log'
 
 
-every 1.minutes do
+every 5.minutes do
   runner "Server.update_all"
 end
 
