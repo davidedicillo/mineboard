@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
+load_func = () ->
+
 
   # Set the defaults for DataTables initialisation 
   $.extend true, $.fn.dataTable.defaults,
@@ -169,6 +170,10 @@ jQuery ->
       iDisplayLength: 10
       bFilter: true
 
+
   $('#stats').dataTable
     aaSorting: [[1, "asc"]]
   $('#servers').dataTable()
+
+$(document).ready(load_func);
+$(document).on('page:load', load_func);
