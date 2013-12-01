@@ -1,9 +1,9 @@
 class Server < ActiveRecord::Base
 
-  has_many :stats
+  has_many :stats, :dependent => :destroy
 
   def get_stats
-    contents = `sshpass -p '#{password}' ssh #{user}@#{ip} tail /var/log/supervisor/primecoin.log`
+    contents = `sshpass -p '#{password}' ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no #{user}@#{ip} tail /var/log/supervisor/primecoin.log`
     
     lines = contents.lines.select do |line|
       line.split("]")[0] == "[STATS"
