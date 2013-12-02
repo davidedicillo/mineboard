@@ -33,13 +33,16 @@ gem 'font-awesome-sass'
 
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
+gem 'groupdate'
+gem 'chartkick'
+
 
 group :production do
   gem 'mysql2'
 end        
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql2'
 end
 
 

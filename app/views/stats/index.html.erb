@@ -1,6 +1,9 @@
 <h1>Listing stats <span style="font-size:14px;">Past 30 minutes</span></h1>
 
-<%= @stat_ids.count %>
+<%= line_chart [
+  {:name => "5-chains/h", :data => Stat.group_by_minute(:date).average(:fivechains)},
+  {:name => "Primes/s", :data => Stat.group_by_minute(:date).average(:primes)}
+] %>
 
 <h3>Average chains/day: <%= @avgdaychains %> <span style="font-size:14px;">(<i class="<% if @changedaychains > 0 %>fa fa-arrow-up green<% elsif @changedaychains < 0 %>fa fa-arrow-down red<% else %>fa fa-minus<% end %>"></i> <%= @changedaychains %>)</span></h3>
 <h5>Max: <%= @stats.all.map(&:chains).max %> Min: <%= @stats.all.map(&:chains).min %></h5>
